@@ -1,4 +1,4 @@
-# install laradock with php project
+# <span style="color:blue">install laradock with php project</span>.
 
 * Clone laradock from https://github.com/Laradock/laradock.git
     * If you arlready have php project (git submodule add https://github.com/Laradock/laradock.git)
