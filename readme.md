@@ -12,3 +12,5 @@ If you getting error with updating database try to remove old database by commen
 ```
     rm -rf ~/.laradock/data/mysql
 ```
+Some solution link for docker problem
+* https://github.com/laradock/laradock/issues/955
