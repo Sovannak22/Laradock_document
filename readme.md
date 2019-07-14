@@ -98,6 +98,6 @@ GRANT ALL ON `yourdb`.* TO 'admin'@'%' ;
 FLUSH PRIVILEGES ;
 ```
 **3. Remove mysql container and re-run it.**
-**4. php artisan migrate is done :)**
+**4. php artisan migrate is done :)**<br>
 Some solution link for docker problem
 * https://github.com/laradock/laradock/issues/1392
