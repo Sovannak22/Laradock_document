@@ -80,5 +80,24 @@ If you getting error with updating database try to remove old database by commen
 ```
     rm -rf ~/.laradock/data/mysql
 ```
+### SQLSTATE[HY000] [2054] The server requested authentication method unknown to the client
+**1. add default authentication plugin to laradock/mysql/my.cnf**
+```
+[mysqld]
+default_authentication_plugin= mysql_native_password
+```
+**2. update content file mysql/docker-entrypoint-initdb.d/createdb.sql like:**
+```
+CREATE USER 'admin'@'localhost' IDENTIFIED WITH mysql_native_password BY 'yourpass';
+GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost' WITH GRANT OPTION;
+CREATE USER 'admin'@'%' IDENTIFIED WITH mysql_native_password BY 'yourpass';
+GRANT ALL PRIVILEGES ON *.* TO 'admin'@'%' WITH GRANT OPTION;
+#
+CREATE DATABASE IF NOT EXISTS `yourdb` COLLATE 'utf8_general_ci' ;
+GRANT ALL ON `yourdb`.* TO 'admin'@'%' ;
+FLUSH PRIVILEGES ;
+```
+**3. Remove mysql container and re-run it.**
+**4. php artisan migrate is done :)**
 Some solution link for docker problem
 * https://github.com/laradock/laradock/issues/1392
